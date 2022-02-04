@@ -4,20 +4,21 @@ from datetime import time
 
 
 class Room(models.Model):
-    name = models.CharField(max_length=300)
-    floorNumber = models.IntegerField()
-    roomNumber = models.IntegerField()
+    name = models.CharField(max_length=50)
+    floor = models.IntegerField()
+    room_number = models.IntegerField()
 
     def __str__(self):
-        return f"{self.name} room: {self.roomNumber} on floor {self.floorNumber}"
+        return f"{self.name}  in room number {self.room_number} on floor {self.floor}"
 
 
 class Meeting(models.Model):
-    title = models.CharField(max_length=200)
+    title = models.CharField(max_length=500)
     date = models.DateField()
     start_time = models.TimeField(default=time(9))
     duration = models.IntegerField(default=1)
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
 
     def __str__(self):
-        return f"{self.title} at {self.start_time} on {self.date}"
+        return f"{self.title} on {self.date} starting at {self.start_time}"
+
