@@ -17,9 +17,16 @@ from django.contrib import admin
 from django.urls import path
 from websites.views import welcome
 from websites.views import date
+from websites.views import about
+from meetings.views import detail
+
+# from meetings.views import detail
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('welcome.html', welcome),
+    path('', welcome),
     path('date.html', date),
+    path('about', about),
+    path('meetings/<int:id>', detail)
+
 ]
